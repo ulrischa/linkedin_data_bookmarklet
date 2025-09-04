@@ -1,4 +1,4 @@
-name: Bookmarklet Generator
+name: Test Bookmarklet Generator
 
 on:
   push:
