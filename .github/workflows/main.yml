@@ -1,2 +1,31 @@
-- name: Bookmarklet Generator
-  uses: ulrischa/js_to_bookmarklet_action@v1
+name: Bookmarklet Generator
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'raw.js'
+
+jobs:
+  bookmarklet-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Bookmarklet Generator Action
+        uses: ulrischa/js_to_bookmarklet_action@v1
+        with:
+          source_js_file: 'raw.js'
+          target_html_file: 'index.htm'
+          target_element_id: 'target'
+          commit_message: 'Update bookmarklet link'
+
+      - name: Debug Files and Environment
+        run: |
+          ls -la .
+          cat raw.js
+          cat index.htm
+        shell: bash
