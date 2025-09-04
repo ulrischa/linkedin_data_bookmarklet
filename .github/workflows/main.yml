@@ -6,7 +6,10 @@ on:
       - main
     paths:
       - 'raw.js'
-
+      
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+ 
 jobs:
   bookmarklet-job:
     runs-on: ubuntu-latest
